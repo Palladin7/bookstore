@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${book.title}">Book</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+</head>
+<body>
+
+<div class="container text-center">
+    <div>
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+            <tr>
+                <th colspan="2"><h3>Preview Book</h3></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td> Title</td>
+                <td><span th:text="${book.title}"> Title </span></td>
+            </tr>
+            <tr>
+                <td> Author</td>
+                <td><span th:text="${book.author}"> Author </span></td>
+            </tr>
+            <tr>
+                <td> Pages</td>
+                <td><span th:text="${book.pages}"> Pages </span></td>
+            </tr>
+            <tr>
+                <td> Category</td>
+                <td><span th:text="${book.category}"> Category </span></td>
+            </tr>
+            <tr>
+                <td> Price</td>
+                <td><span th:text="${book.price}"> Price </span></td>
+            </tr>
+            <tr>
+                <td> Available</td>
+                <td><span th:text="${book.available}"> Available </span></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="text-center">
+            <form th:action="@{/user/makeOrder}" th:method="get" th:object="${book}">
+                <input class="btn btn-secondary btn-lg btn-block" type="submit" value="Buy">
+                <input type="hidden" th:field="*{id}">
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<br>
+
+<div class="container text-center">
+    <h4><a th:href="@{/}">Home</a></h4>
+</div>
+
+</body>
+</html>
